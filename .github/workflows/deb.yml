@@ -1,17 +1,15 @@
 name: Build kernel and create .deb files
 
 on:
-  push:
-    branches:
-      - test
+  workflow_dispatch:
 
 jobs:
 
   build:
    strategy:
         matrix:
-          version: ['v5.x']
-          kernel-version: ['5.15.105']
+          version: ['6.6.y']
+          kernel-version: ['6.6.31']
 
    runs-on: ubuntu-latest
 
