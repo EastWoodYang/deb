@@ -25,8 +25,7 @@ jobs:
 
         - name: Get kernel source
           run: |
-                # wget https://mirrors.edge.kernel.org/pub/linux/kernel/${{matrix.version}}/linux-${{matrix.kernel-version}}.tar.xz
-                wget https://github.com/unifreq/${{matrix.version}}/archive/refs/tags/${{matrix.kernel-version}}.tar.gz
+                wget https://github.com/unifreq/linux-${{matrix.version}}/archive/refs/tags/linux-${{matrix.kernel-version}}.tar.gz
 
         - name: Extract kernel source
           run: |
