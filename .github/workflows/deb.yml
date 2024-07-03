@@ -37,7 +37,7 @@ jobs:
           run: |
                 cd linux-${{matrix.kernel-version}}/ 
                 ls -l
-                make ARCH=i386 defconfig
+                make ARCH=arm64 defconfig
 
         - name: Change var configuration
           working-directory: linux-${{matrix.kernel-version}}
