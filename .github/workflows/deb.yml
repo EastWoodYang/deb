@@ -34,8 +34,7 @@ jobs:
         - name: Make configuration ARCH
           working-directory: ${{ github.workspace }}
           run: |
-                cd linux-${{matrix.version}}-linux-${{matrix.kernel-version}}/ 
-                ls -l
+                cd linux-${{matrix.version}}-linux-${{matrix.kernel-version}}/
                 cp ../config .config
                 make oldconfig
                 make ARCH=arm64
