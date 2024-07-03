@@ -26,27 +26,26 @@ jobs:
         - name: Get kernel source
           run: |
                 # wget https://mirrors.edge.kernel.org/pub/linux/kernel/${{matrix.version}}/linux-${{matrix.kernel-version}}.tar.xz
-                wget https://github.com/unifreq/linux-6.6.y/archive/refs/tags/linux-6.6.31.tar.gz
+                wget https://github.com/unifreq/${{matrix.version}}/archive/refs/tags/${{matrix.kernel-version}}.tar.gz
 
         - name: Extract kernel source
           run: |
-                mkdir ./linux-${{matrix.kernel-version}}
-                tar -xzvf linux-${{matrix.kernel-version}}.tar.gz -C ./linux-${{matrix.kernel-version}}
+                tar -xzvf linux-${{matrix.kernel-version}}.tar.gz
 
         - name: Make configuration ARCH
           working-directory: ${{ github.workspace }}
           run: |
-                cd linux-${{matrix.kernel-version}}/ 
+                cd linux-${{matrix.version}}-linux-${{matrix.kernel-version}}/ 
                 ls -l
                 make ARCH=arm64 defconfig
 
         - name: Change var configuration
-          working-directory: linux-${{matrix.kernel-version}}
+          working-directory: linux-${{matrix.version}}-linux-${{matrix.kernel-version}}
           run: |
                 sed -i 's/CONFIG_SYSTEM_TRUSTED_KEYS = ""/CONFIG_SYSTEM_TRUSTED_KEYS=""/' .config
 
         - name: Make kernel and create .deb files
-          working-directory: linux-${{matrix.kernel-version}}
+          working-directory: linux-${{matrix.version}}-linux-${{matrix.kernel-version}}
           run: |
                 nice make -j$(nproc) bindeb-pkg
                 cd ..
