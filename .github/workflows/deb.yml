@@ -30,7 +30,7 @@ jobs:
 
         - name: Extract kernel source
           run: |
-                tar -xf linux-${{matrix.kernel-version}}.tar.xz
+                tar -xzvf linux-${{matrix.kernel-version}}.tar.gz
 
         - name: Make configuration ARCH
           working-directory: ${{ github.workspace }}
