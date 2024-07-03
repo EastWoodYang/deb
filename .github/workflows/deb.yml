@@ -30,6 +30,7 @@ jobs:
 
         - name: Extract kernel source
           run: |
+                mkdir ./linux-${{matrix.kernel-version}}
                 tar -xzvf linux-${{matrix.kernel-version}}.tar.gz -C ./linux-${{matrix.kernel-version}}
 
         - name: Make configuration ARCH
