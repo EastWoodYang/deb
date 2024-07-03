@@ -36,8 +36,7 @@ jobs:
           run: |
                 cd linux-${{matrix.version}}-linux-${{matrix.kernel-version}}/
                 cp ../config .config
-                make oldconfig
-                make ARCH=arm64
+                make ARCH=arm64 menuconfig
 
         - name: Change var configuration
           working-directory: linux-${{matrix.version}}-linux-${{matrix.kernel-version}}
