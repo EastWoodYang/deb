@@ -27,7 +27,8 @@ jobs:
 
         - name: Get kernel source
           run: |
-                wget https://mirrors.edge.kernel.org/pub/linux/kernel/${{matrix.version}}/linux-${{matrix.kernel-version}}.tar.xz
+                # wget https://mirrors.edge.kernel.org/pub/linux/kernel/${{matrix.version}}/linux-${{matrix.kernel-version}}.tar.xz
+                wget https://github.com/unifreq/linux-6.6.y/archive/refs/tags/linux-6.6.31.tar.gz
 
         - name: Extract kernel source
           run: |
